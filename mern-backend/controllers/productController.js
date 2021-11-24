@@ -4,6 +4,7 @@ const Product = require('../models/Product')
 async function addProduct (req,res) {
     try {
         const {
+            /* prueba git */
             name,
             size,
             UnitaryPrice,
@@ -36,10 +37,6 @@ async function getProducts (req,res){
     res.status(200).send({products})
 }
 
-/*  async function  deleteProducts (req,res){
-    const products = await Product.
-} */
-
 async function deleteProducts (req,res){
     try {
         await Product.deleteOne({_id: req.params.id})
@@ -51,9 +48,20 @@ async function deleteProducts (req,res){
     
 }
 
+async function updateProducts (req,res){
+    try {
+        await Product.updateOne({_id:req.params.id},{$set:req.body})
+        console.log("Product edited!");
+        res.json('modificado');
+    } catch (error) {
+        
+    }
+}
+
+ 
 module.exports = {
     addProduct,
     getProducts,
-    deleteProducts
-
+    deleteProducts,
+    updateProducts,
 }
