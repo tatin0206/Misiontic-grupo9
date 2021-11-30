@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import AddButton from './AddButton'
 import Header from './Headers'
+import MenuInicial from './menu'
 import ListProducts from './ListProducts'
 import {Modal} from 'react-bootstrap'
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from './Form'
 import { saveProducts, getProducts } from '../services'
 import Loading from "./Loading";
+import 'boxicons'
 
 const ProductLayout = () => {
     const [show,setShow] = useState(false)
@@ -39,7 +41,9 @@ const ProductLayout = () => {
     
     return (
     <>
-    <Header title="Products App"/>
+    <MenuInicial/>
+    {/* <Header title="Products App"/> */}
+
     <AddButton onClick={()=> setShow(true)}/>
     <div className="container mt-5">
     {
