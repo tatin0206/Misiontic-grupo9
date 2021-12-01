@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import AddButton from './AddButton'
-import Header from './Headers'
 import MenuInicial from './menu'
 import ListProducts from './ListProducts'
 import {Modal} from 'react-bootstrap'
-//import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from './Form'
-import { saveProducts, getProducts } from '../services'
+import { saveProducts, getProducts} from '../services'
 import Loading from "./Loading";
 import 'boxicons'
 
@@ -14,7 +12,6 @@ const ProductLayout = () => {
     const [show,setShow] = useState(false)
     const handleClose = () => setShow(false);
 
-    /* Eliminar si no funciona*/
     const [isLoading, setIsLoading]= useState(true)
     const [products, setProducts] = useState([])
 
@@ -42,8 +39,7 @@ const ProductLayout = () => {
     return (
     <>
     <MenuInicial/>
-    {/* <Header title="Products App"/> */}
-
+    
     <AddButton onClick={()=> setShow(true)}/>
     <div className="container mt-5">
     {
@@ -56,7 +52,7 @@ const ProductLayout = () => {
       </h2>)
     }
     {
-      !isLoading && products.length && <ListProducts products={products}/>
+      !isLoading && products.length && <ListProducts products={products} />
     }    
     
     

@@ -1,5 +1,7 @@
 import React from "react";
-import {Button} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import { deleteProduct } from "../services";
+
 const ListProducts = ({ products }) => {
 
     return (
@@ -9,6 +11,7 @@ const ListProducts = ({ products }) => {
                 {products.map((item, index) => (
 
                     <div key={index} className="col mb-3">
+
                         <div className="card" style={{ width: "18rem" }}>
                             <img src={item.imgUrl} className="card" alt="" />
                             <div className="car-body p-2">
@@ -16,12 +19,11 @@ const ListProducts = ({ products }) => {
                                 <hr />
                                 <p style={{ textAlign: 'center' }}>Descripción: {item.description} </p>
                                 <div className='d-flex justify-content-between'>
-                                <Button variant="info">Eliminar</Button> 
-                                <Button variant="dark">Actualizar</Button>
+                                    <Button variant="info" onClick={() => deleteProduct(item._id)}>Eliminar</Button>
+                                    <Button variant="dark">Actualizar</Button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 ))}
