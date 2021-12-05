@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import AddButton from './AddButton'
 import MenuInicial from './menu'
+import Carrusel from './carusel'
+import FormContacto from './Contacto'
 import ListProducts from './ListProducts'
 import {Modal} from 'react-bootstrap'
 import Form from './Form'
@@ -9,6 +11,7 @@ import Loading from "./Loading";
 import 'boxicons'
 
 const ProductLayout = () => {
+    
     const [show,setShow] = useState(false)
     const handleClose = () => setShow(false);
 
@@ -37,11 +40,14 @@ const ProductLayout = () => {
     }
     
     return (
+      
     <>
+
     <MenuInicial/>
-    
+    <div className="container m-5">
+    <Carrusel/>
     <AddButton onClick={()=> setShow(true)}/>
-    <div className="container mt-5">
+        
     {
       isLoading && <Loading/>
     }
@@ -55,6 +61,7 @@ const ProductLayout = () => {
       !isLoading && products.length && <ListProducts products={products} />
     }    
     
+    <FormContacto/>
     
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -68,9 +75,9 @@ const ProductLayout = () => {
          
         </Modal.Footer>
       </Modal> 
-     
-    </div>
+   </div>
     </>
+    
     )}
 
 export default ProductLayout
